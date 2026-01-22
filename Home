@@ -1,0 +1,171 @@
+import React, { useState } from 'react';
+import { 
+  Trophy, 
+  Smartphone, 
+  Users, 
+  TrendingUp, 
+  Calendar, 
+  Zap, 
+  MapPin,
+  CreditCard,
+  RefreshCw,
+  Globe,
+  Radio
+} from 'lucide-react';
+
+const RoadmapDashboard = () => {
+  const [activeQuarter, setActiveQuarter] = useState('Q1');
+
+  const quarters = {
+    Q1: {
+      title: "Phase 1: App as a Branch",
+      period: "Jan – Mar 2026",
+      focus: "Offline → App Conversion",
+      color: "border-emerald-500 text-emerald-500",
+      bg: "bg-emerald-500/10",
+      icon: <Smartphone className="w-6 h-6" />,
+      goals: [
+        "Position Bezbets App as a full 'Digital Branch' nationwide",
+        "Convert 30% of existing branch bettors to app users",
+        "QR code deployment inside all 15 branches (posters, slips, screens)",
+        "Teller-assisted onboarding during low-traffic hours",
+        "Concentrate density in Harare, Bulawayo & Beitbridge"
+      ]
+    },
+
+    Q2: {
+      title: "Phase 2: City & Town Expansion",
+      period: "Apr – Jun 2026",
+      focus: "Geographic Reach Without New Branches",
+      color: "border-blue-500 text-blue-500",
+      bg: "bg-blue-500/10",
+      icon: <MapPin className="w-6 h-6" />,
+      goals: [
+        "Market the Bezbets app in cities with no physical branches",
+        "Billboards and flyers in Gweru, Mutare, Masvingo, Chinhoyi, Kadoma",
+        "Kombi ranks, growth points & bus termini activations (QR + install bonus)",
+        "Brand selected public transport vehicles with Bezbets branding & QR codes",
+        "Use local street promoters paid per verified app install"
+      ]
+    },
+
+    Q3: {
+      title: "Phase 3: Daily Betting Habits",
+      period: "Jul – Sep 2026",
+      focus: "Retention & Betting Frequency",
+      color: "border-purple-500 text-purple-500",
+      bg: "bg-purple-500/10",
+      icon: <RefreshCw className="w-6 h-6" />,
+      goals: [
+        "Daily football bets tailored for low-stake users (USD $0.50 – $1)",
+        "App-exclusive odds and bets not available in branches",
+        "In-app notifications for fixtures, odds boosts & promotions",
+        "Re-activate dormant users using app notifications (not SMS)",
+        "Stabilize monthly active users across all provinces"
+      ]
+    },
+
+    Q4: {
+      title: "Phase 4: Scaled Marketing & Brand Authority",
+      period: "Oct – Dec 2026",
+      focus: "Multi-Channel Growth (No Facebook Paid Dependency)",
+      color: "border-yellow-500 text-yellow-500",
+      bg: "bg-yellow-500/10",
+      icon: <Trophy className="w-6 h-6" />,
+      goals: [
+        "Use organic Facebook posting while running paid ads on compliant platforms",
+        "Radio and television advertising during major football events",
+        "Nationwide public transport branding with Bezbets visuals & QR codes",
+        "Heavy focus on bettor education, odds explanation & betting discipline content",
+        "Position Bezbets as a trusted betting authority, not just a bookmaker"
+      ]
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 p-6">
+      <header className="mb-10 text-center">
+        <h1 className="text-4xl font-extrabold mb-3">
+          Bezbets 2026 Executable Roadmap
+        </h1>
+        <p className="text-slate-400 max-w-3xl mx-auto">
+          A Zimbabwe-realistic growth plan using the Bezbets app, physical presence,
+          and compliant media channels to achieve national reach.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-8">
+          <div className="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+            <div className="grid grid-cols-4 gap-2 mb-6">
+              {Object.keys(quarters).map((q) => (
+                <button
+                  key={q}
+                  onClick={() => setActiveQuarter(q)}
+                  className={`p-3 rounded-lg border ${
+                    activeQuarter === q
+                      ? `${quarters[q].bg} ${quarters[q].color}`
+                      : 'border-slate-700 text-slate-400'
+                  }`}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+
+            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
+              <h2 className={`text-2xl font-bold mb-2 ${quarters[activeQuarter].color}`}>
+                {quarters[activeQuarter].title}
+              </h2>
+              <p className="text-slate-400 mb-4">
+                {quarters[activeQuarter].period} — Focus: {quarters[activeQuarter].focus}
+              </p>
+
+              <ul className="space-y-3">
+                {quarters[activeQuarter].goals.map((goal, i) => (
+                  <li key={i} className="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                    {goal}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-4 space-y-6">
+          <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <h3 className="font-bold mb-3 flex items-center gap-2">
+              <Smartphone className="w-5 h-5 text-emerald-400" />
+              Primary Growth Lever
+            </h3>
+            <p className="text-slate-400 text-sm">
+              The Bezbets app is the fastest and lowest-cost way to enter new
+              cities and towns without opening physical branches.
+            </p>
+          </div>
+
+          <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <h3 className="font-bold mb-3 flex items-center gap-2">
+              <Radio className="w-5 h-5 text-emerald-400" />
+              Mass Media Reality
+            </h3>
+            <p className="text-slate-400 text-sm">
+              Radio, television, outdoor media, and public transport remain the
+              most trusted mass-reach channels in Zimbabwe.
+            </p>
+          </div>
+
+          <div className="bg-emerald-900/30 p-5 rounded-2xl border border-emerald-500/30">
+            <h3 className="font-bold text-emerald-400">North Star Metric</h3>
+            <p className="text-3xl font-extrabold mt-2">10× Reach</p>
+            <p className="text-sm text-emerald-200/70">
+              Active bettors across cities and towns by December 2026
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoadmapDashboard;
