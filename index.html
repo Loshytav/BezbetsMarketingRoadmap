@@ -2,13 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bezbets 2026 Growth Roadmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.umd.js"></script>
+  <style>
+    .fade-in { animation: fadeIn 0.6s ease-out both; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-slate-950 via-slate-900 to-black text-slate-100">
-  <div id="app"></div>
-  <script type="module" src="app.js"></script>
+
+  <div class="max-w-6xl mx-auto p-8">
+    <h1 class="text-5xl font-extrabold text-center mb-4">
+      Bezbets 2026 Growth Roadmap
+    </h1>
+    <p class="text-center text-slate-400 mb-10">
+      A Zimbabwe-executable strategy to achieve 10× national reach
+    </p>
+
+    <div class="grid grid-cols-4 gap-4 mb-10">
+      <button onclick="show('Q1')" class="tab">Q1</button>
+      <button onclick="show('Q2')" class="tab">Q2</button>
+      <button onclick="show('Q3')" class="tab">Q3</button>
+      <button onclick="show('Q4')" class="tab">Q4</button>
+    </div>
+
+    <div id="content" class="fade-in bg-slate-900/70 backdrop-blur-xl p-8 rounded-3xl border border-slate-700 shadow-2xl"></div>
+
+    <div class="mt-16 text-center">
+      <div class="text-6xl font-extrabold text-emerald-400">10×</div>
+      <p class="text-slate-400">Reach across Zimbabwe by December 2026</p>
+    </div>
+  </div>
+
+<script>
+const phases = {
+  Q1: {
+    title: "App = Digital Branch",
+    subtitle: "Convert physical bettors into nationwide reach",
+    goals: [
+      "QR onboarding in all 15 branches",
+      "30% branch-to-app conversion",
+      "Teller-assisted installs",
+      "Harare, Bulawayo & Beitbridge density"
+    ]
+  },
+  Q2: {
+    title: "Nationwide Expansion",
+    subtitle: "Reach cities & towns without branches",
+    goals: [
+      "Billboards & flyers in major towns",
+      "Kombi & bus branding with QR codes",
+      "Street promoters paid per install",
+      "Growth point activations"
+    ]
+  },
+  Q3: {
+    title: "Daily Betting Habits",
+    subtitle: "Low stakes. High frequency.",
+    goals: [
+      "USD $0.50 – $1 daily football bets",
+      "App-only odds & promos",
+      "In-app notifications",
+      "Dormant user reactivation"
+    ]
+  },
+  Q4: {
+    title: "Brand Authority at Scale",
+    subtitle: "Trust beats hype",
+    goals: [
+      "Radio & TV football advertising",
+      "Organic Facebook + compliant paid ads",
+      "Public transport branding",
+      "Bettor education content"
+    ]
+  }
+};
+
+function show(q) {
+  const c = document.getElementById("content");
+  c.classList.remove("fade-in");
+  void c.offsetWidth;
+  c.classList.add("fade-in");
+
+  const p = phases[q];
+  c.innerHTML = `
+    <h2 class="text-3xl font-bold text-emerald-400 mb-2">${p.title}</h2>
+    <p class="text-slate-400 mb-6">${p.subtitle}</p>
+    <ul class="grid md:grid-cols-2 gap-4">
+      ${p.goals.map(g => `<li class="bg-black/40 p-4 rounded-xl border border-slate-700">${g}</li>`).join("")}
+    </ul>
+  `;
+}
+
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.className += " p-4 rounded-xl border border-slate-700 hover:border-emerald-400 transition font-bold";
+});
+
+show("Q1");
+</script>
+
 </body>
 </html>
